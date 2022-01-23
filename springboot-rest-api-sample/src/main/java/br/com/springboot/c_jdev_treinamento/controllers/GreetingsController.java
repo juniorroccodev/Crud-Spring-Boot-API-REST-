@@ -35,7 +35,7 @@ public class GreetingsController {
      * @param name the name to greet
      * @return greeting text
      */
-    @RequestMapping(value = "/init/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/mostrarnome/{name}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public String greetingText(@PathVariable String name) {
         return "Curso Spring Boot API: " + name + "!";
@@ -73,15 +73,15 @@ public class GreetingsController {
     	
     }
     
-    @DeleteMapping(value = "delete")
-    @ResponseBody
-    public ResponseEntity<String> delete(@RequestParam Long iduser){
-    	
-    	usuarioRepository.deleteById(iduser);
-    	
-    	return new ResponseEntity<String>("User deletado com sucesso", HttpStatus.OK);
-    	
-    }
+    @DeleteMapping(value = "delete") /* mapeia a url */
+	@ResponseBody /* Descricao da resposta */
+	public ResponseEntity<String> delete(@RequestParam Long iduser) { /* Recebe os dados para delete */
+
+		usuarioRepository.deleteById(iduser);
+
+		return new ResponseEntity<String>("User deletado com sucesso", HttpStatus.OK);
+
+	}
     
     @GetMapping(value = "buscaruserid") /*Método Buscar*/
     @ResponseBody
